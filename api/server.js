@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
+const errorHandler = require("./middlewares/error");
 
 dotenv.config({ path: "./config/.env" });
 connectDB();
@@ -25,6 +26,7 @@ if (process.env.NODE_ENV === "development") {
 app.use("/feed", feedRoute);
 app.use("/user", userRoute);
 app.use("/post", postRoute);
+app.use(errorHandler);
 
 // listening
 const PORT = process.env.PORT || 5000;
