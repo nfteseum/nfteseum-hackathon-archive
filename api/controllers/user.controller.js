@@ -14,7 +14,23 @@ const createToken = (address) => {
 };
 
 const getLoggedinUser = asyncHandler(async (req, res, next) => {
-	return res.status(200).json({ status: "ok", data: {} });
+	const token = req.cookies.jwt;
+	if (!token) {
+		return res.status(400).json({
+			status: "error",
+			error: "No logged in user",
+		});
+	}
+
+	jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+		if (err) {
+			return res.status(400).json({ status: "error", error: "Invalid JWT" });
+		}
+
+		const address = decodedToken.address;
+		const user = await UserModel.findOne({ address });
+		return res.status(200).json({ status: "ok", data: user });
+	});
 });
 
 const getNonce = asyncHandler(async (req, res, next) => {
@@ -33,6 +49,13 @@ const getNonce = asyncHandler(async (req, res, next) => {
 const getAddressUser = asyncHandler(async (req, res, next) => {
 	const address = req.params.address;
 	const user = await UserModel.findOne({ address: address });
+	if (!user) {
+		return res.status(400).json({
+			status: "error",
+			error: "Address does not exist",
+		});
+	}
+	return res.status(200).json({ status: "ok", data: user });
 });
 
 // REFERENCE: READ TO UNDERSTAND
