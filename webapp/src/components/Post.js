@@ -14,13 +14,16 @@ export default class Post extends React.Component {
         <div className="body">
           <img
             alt="nft"
-            src="https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png"
+            src={this.props.nft}
           />
         </div>
         <div className="footer">
           <div className="actions-container">
             <img alt="like" src={process.env.PUBLIC_URL + "/heart.svg"} />
             <img alt="comment" src={process.env.PUBLIC_URL + "/chat.svg"} />
+          </div>
+          <div className="likes">
+          {this.props.likes} {this.props.likes > 1 ? " likes" : " like"}
           </div>
           <div className="description">
             <span>{this.props.name + " "}</span>
