@@ -30,6 +30,9 @@ so we will have created by, and owned by owned by guy can create post created by
 
 - id
 - NFT token id + contract address
+- comments (ids)
+- likes (ids)
+- like count ( calculated server side not column on table)
 
 ### comment
 
@@ -42,7 +45,6 @@ so we will have created by, and owned by owned by guy can create post created by
 
 - user_id
 - post_id
-- like count ( calculated server side not column on table)
 
 ## code structure
 
