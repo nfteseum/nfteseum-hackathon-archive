@@ -23,9 +23,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // route handlers
-app.use("/feed", feedRoute);
-app.use("/user", userRoute);
-app.use("/post", postRoute);
+app.use("/api/feed", feedRoute);
+app.use("/api/user", userRoute);
+app.use("/api/post", postRoute);
 app.use(errorHandler);
 
 // listening
