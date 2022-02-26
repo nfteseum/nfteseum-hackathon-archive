@@ -4,6 +4,7 @@ const colors = require("colors");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
 const errorHandler = require("./middlewares/error");
+const cookieParser = require("cookie-parser");
 
 dotenv.config({ path: "./config/.env" });
 connectDB();
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
 }
+app.use(cookieParser());
 
 // route handlers
 app.use("/api/feed", feedRoute);
