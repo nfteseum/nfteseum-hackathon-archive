@@ -13,6 +13,12 @@ const createToken = (address) => {
 	});
 };
 
+const toHex = (stringToConvert) =>
+	stringToConvert
+		.split("")
+		.map((c) => c.charCodeAt(0).toString(16).padStart(2, "0"))
+		.join("");
+
 const getLoggedinUser = asyncHandler(async (req, res, next) => {
 	const token = req.cookies.jwt;
 	if (!token) {
@@ -42,7 +48,8 @@ const getNonce = asyncHandler(async (req, res, next) => {
 		const user = await UserModel.create({
 			address,
 		});
-		return res.status(200).json({ status: "ok", data: { nonce: user.nonce } });
+		const nonce = user.nonce;
+		return res.status(200).json({ status: "ok", data: { nonce } });
 	}
 });
 
@@ -65,8 +72,8 @@ const getAddressUser = asyncHandler(async (req, res, next) => {
 const loginUser = asyncHandler(async (req, res, next) => {
 	const address = req.params.address;
 	const signature = req.body.signature;
-	const existingNonce = await UserModel.findOne({ address }, "nonce");
-	console.log(`savedNonce: ${existingNonce}`);
+	const existinguser = await UserModel.findOne({ address });
+	const existingNonce = existinguser.nonce;
 
 	const recoveredAddress = recoverPersonalSignature({
 		data: `0x${toHex(existingNonce)}`,
