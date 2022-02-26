@@ -4,6 +4,7 @@ const UserSchema = new mongoose.Schema({
 	address: {
 		type: String,
 		required: [true, "Wallet address required"],
+		unique: [true, "Duplicate value"],
 	},
 	posts: {
 		type: [mongoose.Schema.ObjectId],

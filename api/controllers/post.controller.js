@@ -1,6 +1,10 @@
-// postInfo, getComments, postComment, getLikes, postLike
+// getInfo, postPost, getComments, postComment, getLikes, postLike
 
-const postInfo = (req, res, next) => {
+const getInfo = (req, res, next) => {
+	return res.status(200).json({ status: "ok", data: {} });
+};
+
+const postPost = (req, res, next) => {
 	return res.status(200).json({ status: "ok", data: {} });
 };
 
@@ -21,7 +25,8 @@ const postLike = (req, res, next) => {
 };
 
 module.exports = {
-	postInfo,
+	postPost,
+	getInfo,
 	getComments,
 	postComment,
 	getLikes,

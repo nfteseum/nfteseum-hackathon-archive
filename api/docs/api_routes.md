@@ -8,7 +8,7 @@ base url: `domain.com/api/`
 - get recent posts from following
 - paginate
 
-# POST /user/me
+# GET /user/me
 
 - info about user logged in
 
@@ -22,11 +22,18 @@ base url: `domain.com/api/`
 - web3 login
 - address ( wallet address ), sig
 
+# POST /post
+
+- tokenid
+- contractAddr
+- get owner from contract
+- description
+
 # GET /post/:id
 
 - post info
 - nft, description
-- author
+- find a way to get author wallet id from toeknid and contractaddr
 - likes
 - comments
 
