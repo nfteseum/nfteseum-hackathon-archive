@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const LikeSchema = mongoose.Schema({
+const LikeSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Schema.ObjectId,
 		ref: "User",

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PostSchema = mongoose.Schema(
+const PostSchema = new mongoose.Schema(
 	{
 		tokenID: {
 			type: String,
@@ -23,10 +23,14 @@ const PostSchema = mongoose.Schema(
 			type: String,
 			required: [true, "Description is required"],
 		},
+		author: {
+			type: mongoose.Schema.ObjectId,
+			ref: "User",
+		},
 	},
 	{
 		timestamps: true,
 	}
 );
 
-module.exports = new mongoose.Model("Post", PostSchema);
+module.exports = new mongoose.model("Post", PostSchema);
