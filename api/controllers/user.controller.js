@@ -75,11 +75,15 @@ const loginUser = asyncHandler(async (req, res, next) => {
 	const existinguser = await UserModel.findOne({ address });
 	const existingNonce = existinguser.nonce;
 
+	console.log(`signature ${signature}`);
+	console.log(`existing ${existingNonce}`);
+
 	const recoveredAddress = recoverPersonalSignature({
 		data: `0x${toHex(existingNonce)}`,
 		signature: signature,
 	});
-	console.log(recoveredAddress);
+	console.log(`recoveredAddress: ${recoveredAddress}`);
+	console.log(`address: ${address}`);
 
 	if (recoveredAddress === address) {
 		// verified
