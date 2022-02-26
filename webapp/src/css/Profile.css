@@ -1,0 +1,117 @@
+.profile-page {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+}
+
+.user-info-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+}
+
+.user-avatar {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    align-self: stretch;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.user-avatar > img {
+    height: 160px;
+    width: 160px;
+}
+
+.user-info {
+    flex: 1.5;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+}
+
+.user-name {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: larger;
+}
+
+.user-data {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.user-data > s {
+    text-decoration: none;
+    font-size: medium;
+}
+
+.user-data > s > s {
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.user-bio {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: medium;
+}
+
+.action-buttons {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+}
+
+button {
+    border: 1px solid #242424;
+    background-color: #1e1e1e;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.separator {
+    background-color:#242424;
+    height: 1px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.posts {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto auto;
+}
+
+.posts > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: black;
+}
+
+@media only screen and (max-width: 670px) {
+    .user-info {
+        flex: 1;
+    }
+    .user-data {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .user-avatar > img {
+        height: 120px;
+        width: 120px;
+    }
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import "../css/Post.css";
+import like from "../assets/heart.svg";
+import comment from "../assets/chat.svg";
 
 export default class Post extends React.Component {
   render() {
@@ -19,8 +21,8 @@ export default class Post extends React.Component {
         </div>
         <div className="footer">
           <div className="actions-container">
-            <img alt="like" src={process.env.PUBLIC_URL + "/heart.svg"} />
-            <img alt="comment" src={process.env.PUBLIC_URL + "/chat.svg"} />
+            <img alt="like" src={like} />
+            <img alt="comment" src={comment} />
           </div>
           <div className="likes">
           {this.props.likes} {this.props.likes > 1 ? " likes" : " like"}
