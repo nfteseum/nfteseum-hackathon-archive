@@ -1,0 +1,68 @@
+.post {
+  margin: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  width: 600px;
+  border: 2px solid #242424;
+}
+
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 60px;
+}
+
+.owner-favicon {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.owner-favicon > img {
+  width: 100%;
+  height: 100%;
+}
+
+.owner-name {
+  font-weight: 600;
+}
+
+.body {
+  height: 500px;
+}
+
+.body > img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.footer {
+  padding: 10px;
+}
+
+.actions-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 40px;
+}
+
+.actions-container > img {
+  height: 26px;
+  width: 26px;
+  margin-right: 15px;
+  color: white;
+}
+
+.description {
+  font-weight: 400;
+}
+
+.description > span {
+  font-weight: 600;
+}
