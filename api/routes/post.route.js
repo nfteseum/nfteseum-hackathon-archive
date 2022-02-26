@@ -10,9 +10,14 @@ const {
 	postLike,
 } = require("../controllers/post.controller");
 
-router.route("/").post(postPost);
+const userinfo = require("../middlewares/userinfo");
+
+router.route("/").post(userinfo, postPost);
 router.route("/:id").get(getInfo);
-router.route("/:id/comment").get(getComments).put(postComment);
-router.route("/:id/like").get(getLikes).put(postLike);
+router
+	.route("/:id/comment")
+	.get(userinfo, getComments)
+	.put(userinfo, postComment);
+router.route("/:id/like").get(userinfo, getLikes).put(userinfo, postLike);
 
 module.exports = router;

@@ -33,7 +33,7 @@ base url: `domain.com/api/`
 
 - post info
 - nft, description
-- find a way to get author wallet id from toeknid and contractaddr
+- find a way to get author wallet id from tokenid and contractaddr
 - likes
 - comments
 

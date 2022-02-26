@@ -5,7 +5,6 @@ const PostSchema = new mongoose.Schema(
 		tokenID: {
 			type: String,
 			required: [true, "Token id of NFT is required"],
-			unique: [true, "Duplicate value"],
 		},
 		contractAddr: {
 			type: String,
