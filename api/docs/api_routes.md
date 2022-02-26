@@ -8,10 +8,19 @@ base url: `domain.com/api/`
 - get recent posts from following
 - paginate
 
-# GET /:address
+# POST /user/me
+
+- info about user logged in
+
+# GET /user/:address
 
 - profile page
 - posts, user profile info (bio, pfp, following, followers)
+
+# POST /user/login
+
+- web3 login
+- address ( wallet address ), sig
 
 # GET /post/:id
 
@@ -21,19 +30,14 @@ base url: `domain.com/api/`
 - likes
 - comments
 
-# POST /user
-
-- info about user
-- bio username pfp
-
-# POST /post/:id/comment
+# GET PUT /post/:id/comment
 
 - comment
+- get comments paginated
+- post comment adds comment to table
 
-# /post/:id/like
+# GET PUT /post/:id/like
 
 - like
-
-# /user/login
-
-- metamask login
+- get likes paginated
+- post like adds like to table

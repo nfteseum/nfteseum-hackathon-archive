@@ -24,22 +24,22 @@ so we will have created by, and owned by owned by guy can create post created by
 - bio
 - follower [array of users]
 - following [array of users]
+- nonce ( number only used once for verification)
 
 ### post
 
 - id
 - NFT token id + contract address
 
-### comment (object not table)
+### comment
 
 - id
 - user_id
 - content
 - post id
 
-### like (object not table)
+### like - id
 
-- id
 - user_id
 - post_id
 - like count ( calculated server side not column on table)

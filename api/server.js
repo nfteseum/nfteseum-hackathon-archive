@@ -7,6 +7,10 @@ const connectDB = require("./config/db");
 dotenv.config({ path: "./config/.env" });
 connectDB();
 
+const feedRoute = require("./routes/feed.route");
+const postRoute = require("./routes/post.route");
+const userRoute = require("./routes/user.route");
+
 const app = express();
 
 // middlewares
@@ -18,6 +22,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // route handlers
+app.use("/feed", feedRoute);
+app.use("/user", userRoute);
+app.use("/post", postRoute);
 
 // listening
 const PORT = process.env.PORT || 5000;
