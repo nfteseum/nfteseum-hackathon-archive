@@ -13,12 +13,6 @@ const createToken = (address) => {
 	});
 };
 
-const toHex = (stringToConvert) =>
-	stringToConvert
-		.split("")
-		.map((c) => c.charCodeAt(0).toString(16).padStart(2, "0"))
-		.join("");
-
 const getLoggedinUser = asyncHandler(async (req, res, next) => {
 	const token = req.cookies.jwt;
 	if (!token) {
@@ -78,16 +72,10 @@ const loginUser = asyncHandler(async (req, res, next) => {
 	const existinguser = await UserModel.findOne({ address });
 	const existingNonce = existinguser.nonce;
 
-	console.log(`signature`);
-	console.log(signature);
-	console.log(`existing nonce ${existingNonce}`);
-
 	const recoveredAddress = recoverPersonalSignature({
 		data: `${existingNonce}`,
 		signature: signature,
 	});
-	console.log(`recoveredAddress: ${recoveredAddress}`);
-	console.log(`address: ${address}`);
 
 	if (recoveredAddress.toLowerCase() === address.toLowerCase()) {
 		// verified
