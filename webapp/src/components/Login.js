@@ -1,6 +1,9 @@
 import React from "react";
 import "../css/Login.css";
 /*
+
+https://docs.alchemy.com/alchemy/tutorials/nft-minter#step-4-connect-metamask-to-your-ui
+
 import { ethers } from "ethers";
 import Web3Modal from "@web3modal/web3modal";
 import WalletConnect from "@walletconnect/web3-provider";

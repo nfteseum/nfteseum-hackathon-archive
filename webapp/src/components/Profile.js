@@ -10,26 +10,23 @@ export default class Profile extends React.Component {
   }
 
   componentDidMount() {
-    // fetch("/feed")
-    //   .then((res) => res.json())
-    //   .then((data) => this.setState({ feedPosts: data }))
-    //   .catch((err) => console.error(err));
+    // call /user/me to get posts and update feedPosts
 
     this.setState({
       feedPosts: [
         {
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png"
+          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
         },
         {
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png"
+          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
         },
         {
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png"
+          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
         },
         {
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png"
-        }
-      ]
+          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
+        },
+      ],
     });
   }
 
@@ -47,9 +44,16 @@ export default class Profile extends React.Component {
           <div className="user-info">
             <p className="user-name">{this.props.name}</p>
             <div className="user-data">
-              <s><s>{this.props.postCount}</s> {this.props.postCount > 1 ? " posts" : " post"}</s>
-              <s><s>{this.props.followers}</s> {" followers"}</s>
-              <s><s>{this.props.following}</s> {" following"}</s>
+              <s>
+                <s>{this.props.postCount}</s>{" "}
+                {this.props.postCount > 1 ? " posts" : " post"}
+              </s>
+              <s>
+                <s>{this.props.followers}</s> {" followers"}
+              </s>
+              <s>
+                <s>{this.props.following}</s> {" following"}
+              </s>
             </div>
             <p className="user-bio">This is some bio<br /> oka</p>
             <UserProfileButtons logOut={this.logOut} />
