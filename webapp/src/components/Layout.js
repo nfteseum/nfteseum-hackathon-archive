@@ -24,6 +24,18 @@ function isEthereumConn() {
 }
 
 export default class Layout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.searchSubmit = this.searchSubmit.bind(this);
+  }
+
+  searchSubmit(e) {
+    e.preventDefault();
+    toast.success("Enjoy this song :)");
+    setTimeout(() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ"), 2000);
+    return false;
+  }
+
   render() {
     return (
       <div className="page">
@@ -36,7 +48,7 @@ export default class Layout extends React.Component {
               </Link>
             </div>
             <div className="nav-searchbar">
-              <input className="nav-bar" placeholder="Search"></input>
+              <form className="nav-bar-form" onSubmit={this.searchSubmit}><input className="nav-bar" placeholder="Search"></input></form>
             </div>
             <div className="nav-profile">
               <NavProfile isLoggedIn={isEthereumConn()} />
