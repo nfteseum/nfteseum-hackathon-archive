@@ -1,11 +1,17 @@
 import React from "react";
 import "../css/PostView.css";
 import like from "../assets/heart.svg";
+import liked from "../assets/heart_filled.svg";
 
 export default class PostView extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { postComments: [] };
+        this.likePost = this.likePost.bind(this);
+        this.state = { postComments: [], liked: this.props.liked || false };
+    }
+
+    likePost() {
+        this.setState({liked: !this.state.liked}); // todo: update in db
     }
 
     componentDidMount() {
@@ -55,7 +61,7 @@ export default class PostView extends React.Component {
                     </div>
                     <div className="pv-separator" />
                     <div className="pv-actions-container">
-                        <img alt="like" src={like} />
+                        <img onClick={this.likePost} alt="like" src={this.state.liked ? liked : like} />
                     </div>
                     <div className="pv-separator" />
                     <form className="add-comment-form"><input className="add-comment" placeholder="Add a comment..."></input></form>
