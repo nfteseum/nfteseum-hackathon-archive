@@ -11,7 +11,9 @@ export default class Layout extends React.Component {
           <div className="nav-content">
             <div className="nav-branding">
               <img alt="app" src={logoCircle} />
-              <Link className="nav-branding-name" to="/">Nftseum</Link>
+              <Link className="nav-branding-name" to="/">
+                Nftseum
+              </Link>
             </div>
             <div className="nav-searchbar">
               <input className="nav-bar" placeholder="Search"></input>

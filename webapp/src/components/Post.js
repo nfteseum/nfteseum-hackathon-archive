@@ -9,10 +9,15 @@ export default class Post extends React.Component {
   constructor(props) {
     super(props);
     this.likePost = this.likePost.bind(this);
-    this.state = {liked: this.props.liked || false}
+    this.state = { liked: this.props.liked || false, likes: this.props.likes };
   }
   likePost() {
-    this.setState({liked: !this.state.liked}); // todo: update in db
+    this.setState({ liked: !this.state.liked }); // todo: update in db
+    if (this.state.liked) {
+      this.state.likes -= 1;
+    } else {
+      this.state.likes += 1;
+    }
   }
   render() {
     return (
@@ -24,18 +29,26 @@ export default class Post extends React.Component {
           <div className="owner-name">{this.props.name}</div>
         </div>
         <div className="body">
-          <img
-            alt="nft"
-            src={this.props.nft}
-          />
+          <img alt="nft" src={this.props.nft} />
         </div>
         <div className="footer">
           <div className="actions-container">
-            <div className="action-btn"><img onClick={this.likePost} alt="like" src={this.state.liked ? liked : like} /></div>
-            <Link className="action-btn" to={"post/"+this.props.address+"/"+this.props.id}><img alt="comment" src={comment} /></Link>
+            <div className="action-btn">
+              <img
+                onClick={this.likePost}
+                alt="like"
+                src={this.state.liked ? liked : like}
+              />
+            </div>
+            <Link
+              className="action-btn"
+              to={"post/" + this.props.address + "/" + this.props.id}
+            >
+              <img alt="comment" src={comment} />
+            </Link>
           </div>
           <div className="likes">
-          {this.props.likes} {this.props.likes > 1 ? " likes" : " like"}
+            {this.state.likes} {this.state.likes > 1 ? " likes" : " like"}
           </div>
           <div className="description">
             <span>{this.props.name + " "}</span>

@@ -9,10 +9,8 @@ export default class Feed extends React.Component {
   }
 
   componentDidMount() {
-    // fetch("/feed")
-    //   .then((res) => res.json())
-    //   .then((data) => this.setState({ feedPosts: data }))
-    //   .catch((err) => console.error(err));
+    // call /api/feed and set feedPosts to it
+    // add pagination buttons to switch pages and update feedPosts prop after getting data from api
 
     this.setState({
       feedPosts: [
@@ -23,7 +21,7 @@ export default class Feed extends React.Component {
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "haha grass",
           likes: 69,
-          liked: true
+          liked: true,
         },
         {
           name: "noobmaster69",
@@ -31,7 +29,7 @@ export default class Feed extends React.Component {
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "haha more grass",
-          likes: 420
+          likes: 420,
         },
         {
           name: "noobmaster69",
@@ -39,7 +37,8 @@ export default class Feed extends React.Component {
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "haha even more grass",
-          likes: 1
+
+          likes: 1,
         },
         {
           name: "noobmaster69",
@@ -47,9 +46,9 @@ export default class Feed extends React.Component {
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "ok last one",
-          likes: 2
-        }
-      ]
+          likes: 2,
+        },
+      ],
     });
   }
 
@@ -57,8 +56,21 @@ export default class Feed extends React.Component {
     return (
       <div className="mainfeed">
         {this.state.feedPosts ? (
-          this.state.feedPosts.map((post, index) => { // switch id=index to post id
-            return <Post key={index} id={index} address={post.address} name={post.name} favicon={post.favicon} nft={post.nft} description={post.description} likes={post.likes} liked={post.liked} />;
+          this.state.feedPosts.map((post, index) => {
+            // switch id=index to post id
+            return (
+              <Post
+                key={index}
+                id={index}
+                address={post.address}
+                name={post.name}
+                favicon={post.favicon}
+                nft={post.nft}
+                description={post.description}
+                likes={post.likes}
+                liked={post.liked}
+              />
+            );
           })
         ) : (
           <p>No posts</p>
