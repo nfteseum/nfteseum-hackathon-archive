@@ -15,6 +15,14 @@ function NavProfile(props) {
   return <Login />;
 }
 
+function isEthereumConn() {
+  try {
+    return window.ethereum.isConnected();
+  } catch {
+    return false;
+  }
+}
+
 export default class Layout extends React.Component {
   render() {
     return (
@@ -31,7 +39,7 @@ export default class Layout extends React.Component {
               <input className="nav-bar" placeholder="Search"></input>
             </div>
             <div className="nav-profile">
-              <NavProfile isLoggedIn={window.ethereum.isConnected()} />
+              <NavProfile isLoggedIn={isEthereumConn()} />
             </div>
           </div>
         </div>
