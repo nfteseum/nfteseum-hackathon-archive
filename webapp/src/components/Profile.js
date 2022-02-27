@@ -1,6 +1,10 @@
 import "../css/Profile.css";
 import { Link } from "react-router-dom";
 import React from "react";
+import { toast } from 'react-toastify';
+import nft1 from "../assets/nft1.jpeg";
+import nft2 from "../assets/nft2.jpeg";
+import nft3 from "../assets/nft3.jpeg";
 
 export default class Profile extends React.Component {
   constructor(props) {
@@ -15,23 +19,29 @@ export default class Profile extends React.Component {
     this.setState({
       feedPosts: [
         {
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
+          nft: nft1,
+        },
+        {
+          nft: nft2,
+        },
+        {
+          nft: nft3,
         },
         {
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
         },
         {
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
+          nft: nft3,
         },
         {
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
+          nft: nft1,
         },
       ],
     });
   }
 
   logOut() {
-
+    toast.error("Never gonna give you up, Never gonna let you down!")
   }
 
   render() {

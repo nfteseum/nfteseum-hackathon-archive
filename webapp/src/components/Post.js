@@ -12,12 +12,12 @@ export default class Post extends React.Component {
     this.state = { liked: this.props.liked || false, likes: this.props.likes };
   }
   likePost() {
-    this.setState({ liked: !this.state.liked }); // todo: update in db
     if (this.state.liked) {
-      this.state.likes -= 1;
+      this.setState({likes: this.state.likes-1});
     } else {
-      this.state.likes += 1;
+      this.setState({likes: this.state.likes+1});
     }
+    this.setState({ liked: !this.state.liked }); // todo: update in db
   }
   render() {
     return (
@@ -26,7 +26,7 @@ export default class Post extends React.Component {
           <div className="owner-favicon">
             <img alt="favicon" src={this.props.favicon} />
           </div>
-          <div className="owner-name">{this.props.name}</div>
+          <Link className="owner-name-link" to="/user/me"><div className="owner-name">{this.props.name}</div></Link>
         </div>
         <div className="body">
           <img alt="nft" src={this.props.nft} />

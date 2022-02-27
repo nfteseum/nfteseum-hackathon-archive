@@ -118,6 +118,8 @@
     border: none;
     padding-left: 10px;
     padding-right: 10px;
+    color: white;
+    font-size: medium;
 }
 
 .add-comment:focus {

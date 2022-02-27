@@ -1,0 +1,9 @@
+.login-btn {
+    border: 1px solid #242424;
+    background-color: #1e1e1e;
+    padding: 8px;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+}
