@@ -27,6 +27,12 @@
   border-radius: 50%;
 }
 
+.owner-name-link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
 .owner-name {
   font-weight: 600;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "../css/PostView.css";
 import like from "../assets/heart.svg";
 import liked from "../assets/heart_filled.svg";
+import { toast } from 'react-toastify';
 
 export default class PostView extends React.Component {
   constructor(props) {
@@ -22,21 +23,27 @@ export default class PostView extends React.Component {
         {
           name: "noobmaster69",
           favicon: "https://github.com/soulninja-dev.png",
-          comment: "haha grass",
+          comment: "hehe",
         },
         {
           name: "noobmaster420",
           favicon: "https://github.com/Shiv-Patil.png",
-          comment: "chad",
+          comment: "wow",
         },
         {
           name: "I touch grass",
           favicon:
             "https://cdn.discordapp.com/attachments/875196892592627722/947263297881800758/11850309_1674349799447611_206178162_a.png",
-          comment: ":D",
+          comment: ":)",
         },
       ],
     });
+  }
+
+  submitComment(e) {
+    e.preventDefault();
+    toast("Your comment is posted, just invisible :p");
+    return false;
   }
 
   render() {
@@ -85,7 +92,7 @@ export default class PostView extends React.Component {
             />
           </div>
           <div className="pv-separator" />
-          <form className="add-comment-form">
+          <form className="add-comment-form" onSubmit={this.submitComment}>
             <input
               className="add-comment"
               placeholder="Add a comment..."

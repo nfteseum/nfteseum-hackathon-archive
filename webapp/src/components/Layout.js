@@ -3,14 +3,13 @@ import { Outlet, Link } from "react-router-dom";
 import React from "react";
 import logoCircle from "../assets/logo circle.png";
 import Login from "./Login";
-
-function LoggedIn(props) {
-  return (
-    <Link to="/user/me" className="nav-profile-icon">
-      <img alt="user" src={this.props.favicon} />
-    </Link>
-  );
-}
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure({
+  draggable: false,
+  theme: "dark",
+  position: "bottom-right"
+});
 
 function NavProfile(props) {
   return <Login />;

@@ -1,6 +1,9 @@
 import React from "react";
 import Post from "./Post";
 import "../css/Feed.css";
+import nft1 from "../assets/nft1.jpeg";
+import nft2 from "../assets/nft2.jpeg";
+import nft3 from "../assets/nft3.jpeg";
 
 export default class Feed extends React.Component {
   constructor(props) {
@@ -15,28 +18,28 @@ export default class Feed extends React.Component {
     this.setState({
       feedPosts: [
         {
-          name: "noobmaster69",
+          name: "user 1",
           address: "0xuser",
           favicon: "https://github.com/soulninja-dev.png",
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
-          description: "haha grass",
+          nft: nft1,
+          description: "Cool NFT",
           likes: 69,
           liked: true,
         },
         {
-          name: "noobmaster69",
+          name: "user too",
           address: "0xuser",
-          favicon: "https://github.com/soulninja-dev.png",
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
-          description: "haha more grass",
+          favicon: "https://github.com/Shiv-Patil.png",
+          nft: nft2,
+          description: "Thanks for the likes",
           likes: 420,
         },
         {
-          name: "noobmaster69",
+          name: "user three",
           address: "0xuser",
-          favicon: "https://github.com/soulninja-dev.png",
-          nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
-          description: "haha even more grass",
+          favicon: "https://github.com/devnull03.png",
+          nft: nft3,
+          description: "what are nfts",
 
           likes: 1,
         },
@@ -45,7 +48,7 @@ export default class Feed extends React.Component {
           address: "0xuser",
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
-          description: "ok last one",
+          description: "what are you doing",
           likes: 2,
         },
       ],

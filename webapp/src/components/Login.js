@@ -2,9 +2,9 @@ import React from "react";
 import "../css/Login.css";
 import { ethers } from "ethers";
 import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 function NavText(props) {
-  console.log(props);
   if (props.state.isLoggedIn) {
     return <LoggedInText favicon="https://github.com/soulninja-dev.png" />;
   } else {
@@ -21,21 +21,21 @@ function LoggedInText(props) {
 }
 
 function NotLoggedIn(props) {
-  return <button onClick={props.loginMetamask}>Login with metamask</button>;
+  return <button className="login-btn" onClick={props.loginMetamask}>Login with metamask</button>;
 }
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: this.props.isLoggedIn,
+      isLoggedIn: this.props.isLoggedIn || false,
       loginMetamask: this.loginMetamask,
     };
   }
 
   loginMetamask = async () => {
     if (typeof window.ethereum == "undefined") {
-      alert("Please install metamask");
+      toast.error("Metamask not found");
       return;
     }
 
@@ -51,12 +51,14 @@ export default class Login extends React.Component {
 
     const res = await fetch(
       `http://localhost:1717/api/user/${address}/nonce`
-    ).then((res) => res.json());
+    ).then((res) => res.json()).catch((e) => toast.error(e.toString()));
+    if (!res || res.status !== "ok") {
+      return toast.error(res.error);
+    }
     const nonce = res.data.nonce;
 
     let message = `${nonce}`;
     let rawSig = signer.signMessage(message);
-    rawSig.then((sig) => console.log(sig));
 
     const res2 = await rawSig.then((sig) =>
       fetch(`http://localhost:1717/api/user/${address}/login`, {
@@ -69,12 +71,11 @@ export default class Login extends React.Component {
           username: "Soul",
           bio: "need sleep",
         }),
-      }).then((res2) => res2.json())
+      }).then((res2) => res2.json()).catch((e) => toast.error(e.toString()))
     );
-    if (res2.status != "ok") {
-      console.log("ERROR GO BRR");
+    if (res2.status !== "ok") {
+      return toast.error("error\n\n" + res2.error);
     }
-
     this.setState({
       isLoggedIn: true,
     });
