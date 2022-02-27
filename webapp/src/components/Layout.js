@@ -2,6 +2,19 @@ import "../css/Layout.css";
 import { Outlet, Link } from "react-router-dom";
 import React from "react";
 import logoCircle from "../assets/logo circle.png";
+import Login from "./Login";
+
+function LoggedIn(props) {
+  return (
+    <Link to="/user/me" className="nav-profile-icon">
+      <img alt="user" src={this.props.favicon} />
+    </Link>
+  );
+}
+
+function NavProfile(props) {
+  return <Login />;
+}
 
 export default class Layout extends React.Component {
   render() {
@@ -19,9 +32,7 @@ export default class Layout extends React.Component {
               <input className="nav-bar" placeholder="Search"></input>
             </div>
             <div className="nav-profile">
-              <Link to="/user/me" className="nav-profile-icon">
-                <img alt="user" src={this.props.favicon} />
-              </Link>
+              <NavProfile isLoggedIn={window.ethereum.isConnected()} />
             </div>
           </div>
         </div>

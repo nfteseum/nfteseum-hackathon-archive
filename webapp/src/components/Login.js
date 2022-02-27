@@ -1,81 +1,91 @@
 import React from "react";
 import "../css/Login.css";
-/*
-
-https://docs.alchemy.com/alchemy/tutorials/nft-minter#step-4-connect-metamask-to-your-ui
-
 import { ethers } from "ethers";
-import Web3Modal from "@web3modal/web3modal";
-import WalletConnect from "@walletconnect/web3-provider";
+import { Link } from "react-router-dom";
 
-let providerOptions = {
-  walletconnect: {
-    package: WalletConnect,
-    options: {
-      infuraId: "c8b1d09b445b4c74322f289254147e55",
-    },
-  },
-};
-
-if (!window?.ethereum?.isSequence) {
-  providerOptions = {
-    ...providerOptions,
-    sequence: {
-      package: sequence,
-      options: {
-        appName: "nftseum",
-        defaultNetwork: "polygon",
-      },
-    },
-  };
+function NavText(props) {
+  console.log(props);
+  if (props.state.isLoggedIn) {
+    return <LoggedInText favicon="https://github.com/soulninja-dev.png" />;
+  } else {
+    return <NotLoggedIn loginMetamask={props.loginMetamask} />;
+  }
 }
 
-const web3Modal = new Web3Modal({
-  providerOptions,
-  cacheProvider: true,
-});
-*/
+function LoggedInText(props) {
+  return (
+    <Link to="/user/me" className="nav-profile-icon">
+      <img alt="user" src={props.favicon} />
+    </Link>
+  );
+}
+
+function NotLoggedIn(props) {
+  return <button onClick={props.loginMetamask}>Login with metamask</button>;
+}
+
 export default class Login extends React.Component {
-  /*componentDidMount() {
-    if (web3Modal.cachedProvider) {
-      connectWallet();
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: this.props.isLoggedIn,
+      loginMetamask: this.loginMetamask,
+    };
   }
 
-  async connectWeb3Modal() {
-    if (web3Modal.cachedProvider) {
-      web3Modal.clearCachedProvider();
-    }
-    connectWallet();
-  }
-
-  async connectWallet() {
-    const wallet = await web3Modal.connect();
-
-    const provider = new ethers.providers.Web3Provider(wallet);
-
-    if (wallet.sequence) {
-      provider.sequence = wallet.sequence;
+  loginMetamask = async () => {
+    if (typeof window.ethereum == "undefined") {
+      alert("Please install metamask");
+      return;
     }
 
-    setProvider(provider);
-  }
+    window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
 
-  async getAccounts() {
-    const signer = provide?.getSigner();
-    console.log("getAddress():", await signer.getAddress());
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
 
-    console.log("accounts:", await provider?.listAccounts());
-  }
+    const address = await signer.getAddress();
+    console.log(address);
 
-  async signMessage() {
-    const signer = await provider?.getSigner();
-    const message = "Never gonna give you up";
-    const sig = await signer.signMessage(message);
-    console.log("signature:", sig);
-  }
-*/
+    const res = await fetch(
+      `http://localhost:1717/api/user/${address}/nonce`
+    ).then((res) => res.json());
+    const nonce = res.data.nonce;
+
+    let message = `${nonce}`;
+    let rawSig = signer.signMessage(message);
+    rawSig.then((sig) => console.log(sig));
+
+    const res2 = await rawSig.then((sig) =>
+      fetch(`http://localhost:1717/api/user/${address}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          signature: sig,
+          username: "Soul",
+          bio: "need sleep",
+        }),
+      }).then((res2) => res2.json())
+    );
+    if (res2.status != "ok") {
+      console.log("ERROR GO BRR");
+    }
+
+    this.setState({
+      isLoggedIn: true,
+    });
+  };
+
   render() {
-    return <div>LOGIN PAGE</div>;
+    return (
+      <NavText
+        loginMetamask={this.loginMetamask}
+        state={{ isLoggedIn: this.state.isLoggedIn }}
+      />
+    );
   }
 }
