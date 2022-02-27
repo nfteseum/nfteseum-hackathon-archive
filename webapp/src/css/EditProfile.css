@@ -1,0 +1,74 @@
+.edit-profile-page {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.ep-category {
+    padding-top: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.ep-label {
+    color: white;
+    font-size: medium;
+    margin-bottom: 5px;
+    font-family: "Inter", sans-serif;
+}
+
+.ep-input {
+    height: 40px;
+    border-radius: 8px;
+    background-color: #121212;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: medium;
+    border: 1px solid #242424;
+    color: white;
+    font-family: "Inter", sans-serif;
+}
+
+.ep-input:focus {
+    outline: none;
+    color: white;
+    font-size: medium;
+    font-family: "Inter", sans-serif;
+}
+
+.ep-input::placeholder {
+    color: #afafaf;
+    font-size: medium;
+    font-family: "Inter", sans-serif;
+}
+
+.ep-textarea {
+    resize: none;
+    height: 140px;
+    border-radius: 8px;
+    background-color: #121212;
+    border: none;
+    border: 1px solid #242424;
+    font-family: "Inter", sans-serif;
+    font-size: medium;
+    color: white;
+    padding: 10px;
+}
+
+.ep-textarea:focus {
+    outline: none;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: medium;
+}
+
+.ep-submit {
+    align-self: center;
+    padding: 5px 10px 6px 10px;
+    background-color: #1e1e1e;
+    border: 1px solid #242424;
+    color: white;
+    font-size: medium;
+    font-family: "Inter", sans-serif;
+}

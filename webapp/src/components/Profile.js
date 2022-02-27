@@ -6,6 +6,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { feedPosts: [] };
+    this.logOut = this.logOut.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,10 @@ export default class Profile extends React.Component {
     });
   }
 
+  logOut() {
+
+  }
+
   render() {
     return (
       <div className="profile-page">
@@ -47,7 +52,7 @@ export default class Profile extends React.Component {
               <s><s>{this.props.following}</s> {" following"}</s>
             </div>
             <p className="user-bio">This is some bio<br /> oka</p>
-            <UserProfileButtons />
+            <UserProfileButtons logOut={this.logOut} />
           </div>
           <div className="spacer" />
         </div>
@@ -55,7 +60,7 @@ export default class Profile extends React.Component {
         <div className="posts">
           {this.state.feedPosts ? (
             this.state.feedPosts.map((post, index) => {
-              return <Link className="profile-post" to={"/post/someuser/"+index}><img key={index} alt="post" src={post.nft} /></Link>; // switch index to post id, someuese to address
+              return <Link key={index} className="profile-post" to={"/post/someuser/" + index}><img alt="post" src={post.nft} /></Link>; // switch index to post id, someuese to address
             })
           ) : (
             <p>No posts</p>
@@ -68,18 +73,23 @@ export default class Profile extends React.Component {
 
 function UserProfileButtons(props) {
   if (true) { // condition whether profile is of user logged in
-    return (<div className="action-buttons">
-      <button> Edit profile </button>
-      <button> Logout </button>
-    </div>);
+    return (
+      <div className="action-buttons">
+        <Link className="btn-container" to="/editprofile"><button> Edit profile </button></Link>
+        <div className="btn-container"><button onClick={props.logOut}> Logout </button></div>
+      </div>
+    );
   }
   if (true) { // condition whether user follows profile
-    return (<div className="action-buttons">
-      <button> Unfollow </button>
-    </div>)
+    return (
+      <div className="action-buttons">
+        <div className="btn-container"><button> Unfollow </button></div>
+      </div>
+    )
   }
-  return (<div className="action-buttons">
-    <button> Follow </button>
-  </div>
+  return (
+    <div className="action-buttons">
+      <div className="btn-container"><button> Follow </button></div>
+    </div>
   );
 }

@@ -69,7 +69,8 @@
     align-items: stretch;
 }
 
-button {
+.btn-container > button {
+    width: 100%;
     border: 1px solid #242424;
     background-color: #1e1e1e;
     padding: 5px;
