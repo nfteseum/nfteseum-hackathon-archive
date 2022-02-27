@@ -5,6 +5,7 @@ import PostView from "./PostView";
 import Login from "./Login";
 import Feed from "./Feed";
 import Layout from "./Layout";
+import EditProfile from "./EditProfile";
 import "../css/App.css";
 
 export default class App extends React.Component {
@@ -56,6 +57,7 @@ export default class App extends React.Component {
                   />
                 }
               />
+              <Route path="editprofile" element={<EditProfile />} />
             </Route>
             <Route path="/login" element={<Login />} />
           </Routes>
