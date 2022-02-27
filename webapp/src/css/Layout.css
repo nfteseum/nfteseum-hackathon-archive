@@ -39,9 +39,11 @@
     height: 40px;
 }
 
-.nav-branding > span {
+.nav-branding-name {
     font-family: "Satisfy", sans-serif;
     font-size: x-large;
+    text-decoration: none;
+    color: white;
 }
 
 .nav-searchbar {

@@ -1,9 +1,19 @@
 import React from "react";
 import "../css/Post.css";
 import like from "../assets/heart.svg";
+import liked from "../assets/heart_filled.svg";
 import comment from "../assets/chat.svg";
+import { Link } from "react-router-dom";
 
 export default class Post extends React.Component {
+  constructor(props) {
+    super(props);
+    this.likePost = this.likePost.bind(this);
+    this.state = {liked: this.props.liked || false}
+  }
+  likePost() {
+    this.setState({liked: !this.state.liked}); // todo: update in db
+  }
   render() {
     return (
       <div className="post">
@@ -21,8 +31,8 @@ export default class Post extends React.Component {
         </div>
         <div className="footer">
           <div className="actions-container">
-            <img alt="like" src={like} />
-            <img alt="comment" src={comment} />
+            <div className="action-btn"><img onClick={this.likePost} alt="like" src={this.state.liked ? liked : like} /></div>
+            <Link className="action-btn" to={"post/"+this.props.address+"/"+this.props.id}><img alt="comment" src={comment} /></Link>
           </div>
           <div className="likes">
           {this.props.likes} {this.props.likes > 1 ? " likes" : " like"}
