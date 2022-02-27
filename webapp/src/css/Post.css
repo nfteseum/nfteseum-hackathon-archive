@@ -24,6 +24,7 @@
 .owner-favicon > img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
 }
 
 .owner-name {
@@ -42,21 +43,26 @@
 }
 
 .footer {
-  padding: 10px;
+  padding: 0 10px 10px 10px;
 }
 
 .actions-container {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  height: 40px;
+  height: 46px;
 }
 
-.actions-container > img {
+.action-btn > img {
   height: 26px;
   width: 26px;
   margin-right: 15px;
   color: white;
+  cursor: pointer;
+}
+
+.likes {
+  margin-bottom: 10px;
 }
 
 .description {

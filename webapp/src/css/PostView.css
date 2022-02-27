@@ -1,0 +1,132 @@
+.post-view {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    border: 1px solid #242424;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nft-view {
+    flex: 1;
+}
+
+.nft-view > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: black;
+}
+
+.pv-post-data {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.pv-header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 60px;
+}
+
+.pv-owner-favicon {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+  
+.pv-owner-favicon > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+  
+.pv-owner-name {
+    font-weight: 600;
+}
+
+.comments-area {
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: auto;
+}
+
+.comments {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.comment-area {
+    display: flex;
+    margin-top: 10px;
+}
+
+.comment-favicon {
+    width: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.comment-favicon > img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.comment-text {
+    font-size: medium;
+}
+
+.comment-text > span {
+    font-weight: 600;
+}
+
+.pv-actions-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 46px;
+    margin-left: 10px;
+}
+  
+.pv-actions-container > img {
+    height: 26px;
+    width: 26px;
+    margin-right: 10px;
+    color: white;
+}
+
+.pv-separator {
+    background-color:#242424;
+    height: 1px;
+}
+
+.add-comment-form {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.add-comment {
+    height: 40px;
+    border-radius: 8px;
+    background-color: #121212;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.add-comment:focus {
+    outline: none;
+    color: white;
+    font-size: medium;
+}
+
+.add-comment::placeholder {
+    color: #afafaf;
+    font-size: medium;
+}

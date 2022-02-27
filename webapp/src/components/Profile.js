@@ -1,4 +1,5 @@
 import "../css/Profile.css";
+import { Link } from "react-router-dom";
 import React from "react";
 
 export default class Profile extends React.Component {
@@ -54,7 +55,7 @@ export default class Profile extends React.Component {
         <div className="posts">
           {this.state.feedPosts ? (
             this.state.feedPosts.map((post, index) => {
-              return <img alt="post" src={post.nft} />;
+              return <Link className="profile-post" to={"/post/someuser/"+index}><img key={index} alt="post" src={post.nft} /></Link>; // switch index to post id, someuese to address
             })
           ) : (
             <p>No posts</p>

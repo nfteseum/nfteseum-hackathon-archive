@@ -18,13 +18,16 @@ export default class Feed extends React.Component {
       feedPosts: [
         {
           name: "noobmaster69",
+          address: "0xuser",
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "haha grass",
-          likes: 69
+          likes: 69,
+          liked: true
         },
         {
           name: "noobmaster69",
+          address: "0xuser",
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "haha more grass",
@@ -32,6 +35,7 @@ export default class Feed extends React.Component {
         },
         {
           name: "noobmaster69",
+          address: "0xuser",
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "haha even more grass",
@@ -39,6 +43,7 @@ export default class Feed extends React.Component {
         },
         {
           name: "noobmaster69",
+          address: "0xuser",
           favicon: "https://github.com/soulninja-dev.png",
           nft: "https://cdn.discordapp.com/attachments/940221080747003978/947042747225866290/bb88c99f4683a5fcf4c367ed8d0c0f64.png",
           description: "ok last one",
@@ -52,8 +57,8 @@ export default class Feed extends React.Component {
     return (
       <div className="mainfeed">
         {this.state.feedPosts ? (
-          this.state.feedPosts.map((post, index) => {
-            return <Post name={post.name} favicon={post.favicon} nft={post.nft} description={post.description} likes={post.likes} />;
+          this.state.feedPosts.map((post, index) => { // switch id=index to post id
+            return <Post key={index} id={index} address={post.address} name={post.name} favicon={post.favicon} nft={post.nft} description={post.description} likes={post.likes} liked={post.liked} />;
           })
         ) : (
           <p>No posts</p>
