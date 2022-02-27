@@ -43,12 +43,15 @@ const getNonce = asyncHandler(async (req, res, next) => {
 	const address = req.params.address;
 	const nonce = await UserModel.findOne({ address: address }, "nonce");
 	if (nonce) {
-		return res.status(200).json({ status: "ok", data: { nonce } });
+		console.log("nonce exists");
+		console.log(nonce);
+		return res.status(200).json({ status: "ok", data: { nonce: nonce.nonce } });
 	} else {
 		const user = await UserModel.create({
 			address,
 		});
 		const nonce = user.nonce;
+		console.log(nonce);
 		return res.status(200).json({ status: "ok", data: { nonce } });
 	}
 });
@@ -75,17 +78,18 @@ const loginUser = asyncHandler(async (req, res, next) => {
 	const existinguser = await UserModel.findOne({ address });
 	const existingNonce = existinguser.nonce;
 
-	console.log(`signature ${signature}`);
-	console.log(`existing ${existingNonce}`);
+	console.log(`signature`);
+	console.log(signature);
+	console.log(`existing nonce ${existingNonce}`);
 
 	const recoveredAddress = recoverPersonalSignature({
-		data: `0x${toHex(existingNonce)}`,
+		data: `${existingNonce}`,
 		signature: signature,
 	});
 	console.log(`recoveredAddress: ${recoveredAddress}`);
 	console.log(`address: ${address}`);
 
-	if (recoveredAddress === address) {
+	if (recoveredAddress.toLowerCase() === address.toLowerCase()) {
 		// verified
 		const username = req.body.username;
 		const bio = req.body.bio;
