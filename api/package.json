@@ -1,0 +1,28 @@
+{
+	"name": "api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"directories": {
+		"doc": "docs"
+	},
+	"scripts": {
+		"dev": "nodemon server.js",
+		"start": "node server.js"
+	},
+	"author": "SoulNinja-dev",
+	"license": "APACHE",
+	"dependencies": {
+		"@metamask/eth-sig-util": "^4.0.0",
+		"colors": "^1.4.0",
+		"cookie-parser": "^1.4.6",
+		"dotenv": "^16.0.0",
+		"express": "^4.17.3",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.2.3",
+		"morgan": "^1.10.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
+}
